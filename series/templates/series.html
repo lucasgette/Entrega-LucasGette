@@ -1,0 +1,57 @@
+{% extends "inicio.html" %}
+{% load static %}
+
+{% block titulo_series %}
+<title>Series</title>
+{% endblock titulo_series %}
+
+{% block series %}
+
+    <div class='seccion'>
+        <div class='contenedor-titulo'>
+            <h2 class='titulo-sección titulo-series' >Series Registradas</h2>
+            <img class='logo-seccion' src={% static "img\series.png" %} alt="">
+        </div>
+
+        <div class='contenedor-listado'>
+            <ul class='lista-elementos'>
+                {% for series in listado_series %}
+                    
+                    <li>{{series}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <a class='boton-custom-2' href={% url 'buscador_series' %}>Buscar series</a>
+    </div>
+
+    <div class='seccion-form'>
+    <div class='contenedor-formulario'>
+        <h3>Ingrese los datos de la series a registrar</h3>
+        <form action={% url 'series' %} method='post'>
+            {% csrf_token %}
+        
+            
+            {{form_series.as_p}}
+        
+       
+            <input class='form-button' type="submit" placeholder='ENV'>
+            
+         
+            
+        </form>
+    </div>
+    </div>
+    
+
+    <div class='contenedor-adicion'>
+        {% if nueva_serie %}
+        <p class='adicion-exitosa'>Se ha añadido exitosamente la serie <span style='font-weight:bold; color:#fff'>{{nueva_serie}}</span></p>
+        <a class='boton-custom' href={% url 'series' %}>Recargar página</a>
+
+        {% else %}
+        {% endif %}
+    </div>
+    
+ 
+{% endblock series %}

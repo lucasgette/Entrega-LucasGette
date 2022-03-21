@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static "css\style.css" %}>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300;500;900&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    {% block titulo_series %}
+    {% block titulo_peliculas %}
+    {% block titulo_libros %}
+    <title>Mi proyecto - Lucas Gette</title>
+    {% endblock titulo_libros %}
+    {% endblock titulo_peliculas %}
+    {% endblock titulo_series %}
+ 
+</head>
+
+<body>
+    <header class='header'>
+        <img class='nav-logo' src={% static "img\rr-nav-logo.png" %}>
+        <a href={% url 'inicio' %}>Inicio</a>
+        <a class='nav-peliculas' href={% url 'peliculas' %}>Películas</a>
+        <a class='nav-series' href={% url 'series' %}>Series</a>
+        <a class='nav-libros' href={% url 'libros' %}>Libros</a>
+        
+       
+     
+    </header>
+
+    <main>
+       
+        {% block nuevo_formulario %}
+        {% block nuevocurso %}
+        {% block buscador_formulario %}
+        {% block peliculas %}
+        {% block buscar_peliculas %}
+        {% block series %}
+        {% block buscar_series %}
+        {% block libros %}
+        {% block buscar_libros %}
+
+        <div class='contenedor-imagen'>
+        <img class='logo-rr-grande' src={% static "img\rrlogo.png" %}>
+        </div>
+        
+        <div class='contenedor-tarjetas'>
+
+            <div class='tarjeta'>
+                <h3>PELÍCULAS</h3>
+                <img class='logo-seccion' src={% static "img\movies.png" %} alt="">
+                <p>En esta sección podrás ver el listado de películas registradas, y agregar nuevas películas</p>
+                <p><a class='boton-custom boton-tarjeta' href={% url 'peliculas' %}>Ir a películas</a></p>
+            </div>
+
+            <div class='tarjeta'>
+                <h3>LIBROS</h3>
+                <img class='logo-seccion' src={% static "img\libros.png" %} alt="">
+                <p>En esta sección podrás ver el listado de libros registrados, y agregar nuevos libros</p>
+                <p><a class='boton-custom boton-tarjeta' href={% url 'libros' %}>Ir a libros</a></p>
+            </div>
+
+            <div class='tarjeta'>
+                <h3>SERIES</h3>
+                <img class='logo-seccion' src={% static "img\series.png" %} alt="">
+                <p>En esta sección podrás ver el listado de series registradas, y agregar nuevas series</p>
+                <p><a class='boton-custom boton-tarjeta' href={% url 'series' %}>Ir a series</a></p>
+
+            </div>
+            
+        
+        
+        </div>
+        
+        {% endblock buscar_libros %}
+        {% endblock libros %}
+        {% endblock buscar_series %}
+        {% endblock series %}
+        {% endblock buscar_peliculas %}
+        {% endblock peliculas %}
+        {% endblock buscador_formulario %}
+        {% endblock nuevocurso %}
+        {% endblock nuevo_formulario %}
+  
+    </main>
+
+    <footer>
+        <p>Visita mi perfil de <a class='footer-link' href="https://www.linkedin.com/in/lucas-gette/" target="_blank"> LinkedIn!</a></p>
+        
+        <img class='linkedin-img' src={% static "img\linkedin.png" %} alt="LinkedIn"} >
+    </footer>
+</body>
+</html>

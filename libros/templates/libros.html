@@ -1,0 +1,57 @@
+{% extends "inicio.html" %}
+{% load static %}
+
+{% block titulo_libros %}
+<title>Libros</title>
+{% endblock titulo_libros %}
+
+{% block libros %}
+
+    <div class='seccion'>
+        <div class='contenedor-titulo'>
+            <h2 class='titulo-sección titulo-libros' >Libros Registrados</h2>
+            <img class='logo-seccion' src={% static "img\libros.png" %} alt="">
+        </div>
+
+        <div class='contenedor-listado'>
+            <ul class='lista-elementos'>
+                {% for libro in listado_libros %}
+                    
+                    <li>{{libro}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <a class='boton-custom-2' href={% url 'buscador_libros' %}>Buscar libros</a>
+    </div>
+    <div class='seccion-form'>
+        <div class='contenedor-formulario'>
+            <h2>Ingrese los datos del libro a registrar</h2>
+
+
+            <form action={% url 'libros' %} method='post'>
+                {% csrf_token %}
+            
+                
+                {{form_libros.as_p}}
+            
+            
+                <input class='form-button' type="submit" placeholder='Enviar'>
+                
+                </div>
+                
+            </form>
+
+
+        </div>
+    </div>
+
+<div class='contenedor-adicion'>
+        {% if nuevo_libro %}
+        <p class='adicion-exitosa'>Se ha añadido exitosamente el libro <span style='font-weight:bold; color:#fff'>{{nuevo_libro}}</span></p>
+        <a class='boton-custom' href={% url 'libros' %}>Recargar página</a>
+        {% else %}
+        {% endif %}
+</div>
+
+ 
+{% endblock libros %}

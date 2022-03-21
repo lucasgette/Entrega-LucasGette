@@ -1,0 +1,62 @@
+{% extends "inicio.html" %}
+{% load static %}
+
+{% block titulo_peliculas %}
+<title>Peliculas</title>
+{% endblock titulo_peliculas %}
+
+{% block peliculas %}
+
+    <div class='seccion'>
+        <div class='contenedor-titulo'>
+            <h2 class='titulo-sección titulo-peliculas' >Peliculas Registradas</h2>
+            <img class='logo-seccion' src={% static "img\movies.png" %} alt="">
+        </div>
+
+        <div class='contenedor-listado'>
+            <ul class='lista-elementos'>
+                {% for pelicula in listado_peliculas %}
+                    
+                    <li>{{pelicula}}</li>
+                {% endfor %}
+            </ul>
+
+            
+        </div>  
+
+        <a class='boton-custom-2' href={% url 'buscador_peliculas' %}>Buscar películas</a>
+    </div>
+    <div class='seccion-form'>
+        <div class='contenedor-formulario'>
+            <h3>Ingrese los datos de la pelicula a registrar</h3><br>
+            
+            
+            <form action={% url 'peliculas' %} method='post'>
+                {% csrf_token %}
+            
+                
+                {{form_pelicula.as_p}}
+            
+            
+                <input class='form-button' type="submit" placeholder='Enviar'>
+                
+        
+                
+            </form>
+
+
+        </div>
+    </div>
+    
+    <div class='contenedor-adicion'>
+        {% if nueva_pelicula %}
+        <p class='adicion-exitosa'>Se ha añadido exitosamente la pelicula <span style='font-weight:bold ; color:#fff'>{{nueva_pelicula}}</span></p>
+        <a class='boton-custom' href={% url 'peliculas' %}>Recargar página</a>
+        
+        {% else %}
+        
+        {% endif %}
+    </div>
+    
+ 
+{% endblock peliculas %}

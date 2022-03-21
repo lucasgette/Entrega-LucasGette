@@ -1,0 +1,51 @@
+{% extends "inicio.html" %}
+{% load static %}
+
+{% block titulo_series %}
+    <title>Buscar Series</title>
+{% endblock titulo_series %}
+
+
+{% block buscar_series %}
+<div class="contenedor-elementos">
+    <h2>Buscador de series</h2>
+    <img class='logo-seccion' src={% static "img\buscarseries.png" %} alt="">
+
+    <form action={% url 'buscador_series' %} method='get'>
+        {% csrf_token %}
+       
+        
+        {{buscador.as_p}}     
+        <br>
+        <input class='form-button' type="submit" placeholder='Buscar'>
+        
+    </form>
+</div>
+
+<div class='contenedor-resultados'>
+        {% if series_buscadas %}
+            
+    
+            {% if  series_encontradas %}
+            <p class='titulo-resultados'>Resultados obtenidos ({{cant_resultados}})</p>
+            <ul class='lista-elementos'>
+                {% for serie in series_encontradas %}
+                    <li>{{serie}}</li>
+                {% endfor %}
+                
+            </ul>
+            <a class='boton-custom' href={% url 'buscador_series' %}>Limpiar resultados</a>
+           
+            {% else %}
+            <p>La búsqueda no ha arrojado resultados!</p>
+            {% endif %}
+
+        {% else %}
+        <p>Aún no se ha efectuado una búsqueda.</p>
+        {% endif %}
+</div>
+
+
+
+
+{% endblock buscar_series %}

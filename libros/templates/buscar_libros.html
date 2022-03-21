@@ -1,0 +1,49 @@
+{% extends "inicio.html" %}
+{% load static %}
+
+{% block titulo_libros %}
+    <title>Buscar Libros</title>
+{% endblock titulo_libros %}
+
+
+{% block buscar_libros %}
+<div class="contenedor-elementos">
+    <h2>Buscador de libros</h2>
+    <img class='logo-seccion' src={% static "img\buscarlibro.png" %} alt="">
+
+    <form action={% url 'buscador_libros' %} method='get'>
+        {% csrf_token %}
+       
+        
+        {{buscador.as_p}}
+        <br>
+        <input class='form-button' type="submit" placeholder='Buscar'>
+
+             
+    </form>
+
+</div>
+
+<div class='contenedor-resultados'>
+        {% if libros_buscados %}
+            {% if  libros_encontrados %}
+            <p class='titulo-resultados'>Resultados obtenidos ({{cant_resultados}})</p>
+            <ul class='lista-elementos'>
+                {% for libro in libros_encontrados %}
+                    <li>{{libro}}</li>
+                {% endfor %}
+            </ul>
+            
+            
+            <a class='boton-custom' href={% url 'buscador_libros' %}>Limpiar resultados</a>
+            {% else %}
+            <p>La búsqueda no ha arrojado resultados!</p>   
+            {% endif %}
+
+        {% else %}
+        <p>Aún no se ha efectuado una búsqueda.</p>
+        {% endif %}
+</div>
+
+
+{% endblock buscar_libros %}
