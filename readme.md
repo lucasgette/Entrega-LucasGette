@@ -5,7 +5,7 @@
 En primer lugar, será necesario clonar el repositorio:
 
 ```sh
-$ git clone https://github.com/lucasgette/Entrega1-Gette.git
+$ git clone https://github.com/lucasgette/Entrega-LucasGette.git
 $ cd Entrega-LucasGette
 
 ```
