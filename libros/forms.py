@@ -21,5 +21,6 @@ class LibrosFormulario(forms.Form):
     publicacion = forms.IntegerField()
     genero = forms.ChoiceField(choices = choices)
 
+
 class BusquedaLibros(forms.Form):
     buscar_libro = forms.CharField(label='Buscar libro', max_length=20)

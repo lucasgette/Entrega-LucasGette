@@ -5,9 +5,7 @@ from .models import Peliculas
 
 # Create your views here.
 
-
 def peliculas(request):
-
     listado_peliculas = Peliculas.objects.filter()
     if request.method == 'POST':
         form_pelicula = PeliculasFormulario(request.POST)
@@ -22,7 +20,6 @@ def peliculas(request):
     form_pelicula = PeliculasFormulario()
     return render(request, 'peliculas.html', {'form_pelicula':form_pelicula, 'listado_peliculas':listado_peliculas})
 
-
 def buscar_peliculas(request):
     peliculas_buscadas = False
     dato = request.GET.get('buscar_pelicula', None)
@@ -33,6 +30,4 @@ def buscar_peliculas(request):
         cant_resultados = len(peliculas_encontradas)
         return render(request,'buscar_peliculas.html',{'buscador':buscador, 'peliculas_encontradas':peliculas_encontradas, 'peliculas_buscadas':peliculas_buscadas,'cant_resultados':cant_resultados})
 
-
-    
     return render(request,'buscar_peliculas.html',{'buscador':buscador})

@@ -19,7 +19,6 @@ def libros(request):
     form_libros = LibrosFormulario()
     return render(request, 'libros.html', {'form_libros':form_libros, 'listado_libros':listado_libros})
 
-
 def buscar_libros(request):
     libros_buscados = False
     dato = request.GET.get('buscar_libro', None)
@@ -30,6 +29,4 @@ def buscar_libros(request):
         cant_resultados = len(libros_encontrados)
         return render(request,'buscar_libros.html',{'buscador':buscador, 'libros_encontrados':libros_encontrados, 'libros_buscados':libros_buscados,'cant_resultados':cant_resultados})
 
-
-    
     return render(request,'buscar_libros.html',{'buscador':buscador})

@@ -19,7 +19,6 @@ def series(request):
     form_series = SeriesFormulario()
     return render(request, 'series.html', {'form_series':form_series, 'listado_series':listado_series})
 
-
 def buscar_series(request):
     series_buscadas = False
     dato = request.GET.get('buscar_serie', None)
@@ -30,8 +29,6 @@ def buscar_series(request):
         cant_resultados = len(series_encontradas)
         return render(request,'buscar_series.html', {'buscador':buscador, 'series_encontradas':series_encontradas, 'series_buscadas':series_buscadas,'cant_resultados':cant_resultados})
 
-
-    
     return render(request,'buscar_series.html', {'buscador':buscador})
 
 

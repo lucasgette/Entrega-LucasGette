@@ -6,6 +6,7 @@ En primer lugar, será necesario clonar el repositorio:
 
 ```sh
 $ git clone https://github.com/lucasgette/Entrega1-Gette.git
+$ cd Entrega-LucasGette
 
 ```
 

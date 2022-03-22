@@ -21,5 +21,6 @@ class SeriesFormulario(forms.Form):
     temporadas = forms.IntegerField()
     genero = forms.ChoiceField(choices = choices)
 
+
 class BusquedaSeries(forms.Form):
     buscar_serie = forms.CharField(label='Buscar serie', max_length=20)
